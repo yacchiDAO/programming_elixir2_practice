@@ -2,8 +2,7 @@ defmodule CliTest do
   use ExUnit.Case
   doctest Issues
 
-  import Issues.CLI, only: [ parse_args: 1,
-                             sort_into_descending_order: 1 ]
+  import Issues.CLI, only: [parse_args: 1, sort_into_descending_order: 1]
 
   test ":help returned by option parsing with -h and --help options" do
     assert parse_args(["-h", "anything"]) == :help
@@ -11,11 +10,11 @@ defmodule CliTest do
   end
 
   test "three values returned if three given" do
-    assert parse_args(["user", "project", "99"]) == { "user", "project", 99 }
+    assert parse_args(["user", "project", "99"]) == {"user", "project", 99}
   end
 
   test "conut is defaulted if two values given" do
-    assert parse_args(["user", "project"]) == { "user", "project", 4 }
+    assert parse_args(["user", "project"]) == {"user", "project", 4}
   end
 
   test "sort descing orders the correct way" do
